@@ -7,18 +7,21 @@ pipeline {
       stage("Build"){
           steps{
               echo 'Building ...'
+              sh 'mvn compile'
               sleep 3
           }
       }
       stage("Test"){
           steps{
               echo 'Testing ...'
+              sh 'mvn clean test'
               sleep 9
           }
       }
       stage("Package"){
           steps{
               echo 'Packaging ...'
+              sh 'mvn package -DskipTests'
               sleep 5
           }
       }
